@@ -1,79 +1,103 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── StayConnect Bespoke Indian Consumer Tech Palette ── */
+  /* ── Series-A Proptech Design System (Airbnb × Linear × Stanza Living) ── */
 
-  /* Primary Brand: Deep Ink Slate (Grounding, Authoritative, Premium) */
-  --color-primary: #121826;
-  --color-primary-light: #1F2937;
-  --color-primary-dark: #0B0F19;
-  --color-primary-50: #F3F4F6;
-  --color-primary-100: #E5E7EB;
-  --color-primary-200: #D1D5DB;
+  /* Headings & Text: High-contrast solid slate */
+  --color-slate-headline: #0F172A;
+  --color-slate-body: #334155;
+  --color-slate-muted: #64748B;
+  --color-slate-subtle: #94A3B8;
 
-  /* Accent: Warm Terracotta / Indian Coral Crimson (Warm, Vibrant, Human, Real Consumer Brand) */
-  --color-secondary: #E04E38;
-  --color-secondary-light: #F0654F;
-  --color-secondary-dark: #C23A25;
-  --color-secondary-50: #FEF2F0;
-  --color-secondary-100: #FDE4DF;
-  --color-secondary-200: #FBCDC4;
+  /* Primary Brand Action: Warm Terracotta / Coral (#EA580C) */
+  --color-brand: #EA580C;
+  --color-brand-hover: #C2410C;
+  --color-brand-active: #9A3412;
+  --color-brand-subtle: #FFF7ED;
+  --color-brand-border: #FFEDD5;
 
-  /* Accent 2: Warm Amber / Mustard (For deposit notes, amenities, verified tags) */
-  --color-amber-accent: #D97706;
-  --color-amber-soft: #FFFBEB;
+  /* Primary & Secondary aliases for components */
+  --color-primary: #0F172A;
+  --color-primary-light: #1E293B;
+  --color-primary-dark: #020617;
+  --color-primary-50: #F8FAFC;
+  --color-primary-100: #F1F5F9;
 
-  /* Backgrounds: Warm Off-White / Natural Canvas (Organic & Premium, never sterile AI blue-gray) */
-  --color-background: #FFFFFF;
-  --color-background-alt: #FAFAF8;
-  --color-surface: #F5F4F0;
-  --color-surface-hover: #ECEAE4;
-  --color-surface-border: #E5E2DA;
+  --color-secondary: #EA580C;
+  --color-secondary-light: #FB923C;
+  --color-secondary-dark: #C2410C;
+  --color-secondary-50: #FFF7ED;
+  --color-secondary-100: #FFEDD5;
 
-  /* Typography */
-  --color-foreground: #14171F;
-  --color-foreground-secondary: #575D6E;
-  --color-foreground-muted: #8B92A4;
-  --color-border: #E8E5DE;
-  --color-border-strong: #D1CDC4;
-  --color-ring: #E04E38;
+  /* Verification & Trust: Deep Emerald (#059669) strictly for Verified / Zero Brokerage */
+  --color-verified: #059669;
+  --color-verified-hover: #047857;
+  --color-verified-bg: #ECFDF5;
+  --color-verified-border: #A7F3D0;
+  --color-success: #059669;
+  --color-success-light: #ECFDF5;
 
-  /* Semantic */
+  /* Surfaces & Canvas: Crisp warm off-white (#FAF9F6) and pure white cards (#FFFFFF) */
+  --color-background: #FAF9F6;
+  --color-background-alt: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F8FAFC;
+  --color-surface-muted: #F1F5F9;
+
+  /* 1px Solid Borders (#E2E8F0) */
+  --color-border: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+  --color-ring: #EA580C;
+
+  /* Semantic Signals */
   --color-error: #DC2626;
   --color-error-light: #FEF2F2;
   --color-warning: #D97706;
   --color-warning-light: #FFFBEB;
-  --color-success: #15803D;
-  --color-success-light: #F0FDF4;
 
-  /* Typography Fonts */
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Typography */
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
 
-  /* Radius & Shadows */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-
-  --shadow-card: 0 1px 3px rgba(20, 23, 31, 0.05), 0 1px 2px rgba(20, 23, 31, 0.03);
-  --shadow-card-hover: 0 8px 20px -4px rgba(20, 23, 31, 0.08), 0 4px 8px -2px rgba(20, 23, 31, 0.04);
-  --shadow-dropdown: 0 12px 28px -4px rgba(20, 23, 31, 0.12);
+  /* Elevations: Crisp, subtle 1px border elevation instead of heavy dark shadows */
+  --shadow-subtle: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
+  --shadow-card-hover: 0 6px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+  --shadow-popover: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
 }
 
 * {
-  border-color: var(--color-border);
+  border-color: #E2E8F0;
 }
 
 body {
   background: var(--color-background);
-  color: var(--color-foreground);
+  color: #0F172A;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings with tight bold tracking (-0.03em) */
+h1, h2, h3, h4, .font-heading {
+  letter-spacing: -0.03em;
+  color: #0F172A;
+}
+
+/* Tabular Numbers for Pricing, Ratings & Financial Data */
+.tabular-nums, .price-display, [data-price] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.font-mono-numbers {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 .container-app {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1200px;
   margin: 0 auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -108,9 +132,9 @@ body {
 .section-heading {
   font-size: 1.625rem;
   font-weight: 800;
-  color: var(--color-primary);
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  color: #0F172A;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 @media (min-width: 768px) {
@@ -121,9 +145,10 @@ body {
 
 .section-subheading {
   font-size: 0.9375rem;
-  color: var(--color-foreground-secondary);
+  color: #475569;
   margin-top: 0.375rem;
   line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

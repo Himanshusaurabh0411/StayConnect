@@ -1,9 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { SlidersHorizontal, RotateCcw, Check, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { SlidersHorizontal, RotateCcw } from "lucide-react";
 import { formatINR } from "@/lib/utils";
 
 interface PropertyFiltersProps {
@@ -62,16 +60,16 @@ export function PropertyFilters({
   ];
 
   return (
-    <div className="rounded-xl border border-border bg-white p-5 shadow-card space-y-6">
-      <div className="flex items-center justify-between pb-3 border-b border-border">
+    <div className="rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-2xs space-y-6">
+      <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="h-4 w-4 text-primary" />
-          <h3 className="font-bold text-sm text-foreground">Filters</h3>
+          <SlidersHorizontal className="h-4 w-4 text-[#0F172A]" />
+          <h3 className="font-bold text-sm text-[#0F172A] tracking-[-0.02em]">Filters</h3>
         </div>
         <button
           type="button"
           onClick={onReset}
-          className="text-xs text-foreground-secondary hover:text-primary flex items-center gap-1 font-medium"
+          className="text-xs text-[#64748B] hover:text-[#EA580C] flex items-center gap-1 font-semibold transition-colors"
         >
           <RotateCcw className="h-3 w-3" />
           Reset All
@@ -80,13 +78,13 @@ export function PropertyFilters({
 
       {/* City Filter */}
       <div className="space-y-2">
-        <label className="text-xs font-semibold uppercase tracking-wider text-foreground-secondary block">
+        <label className="text-xs font-bold uppercase tracking-wider text-[#64748B] block">
           City
         </label>
         <select
           value={selectedCity}
           onChange={(e) => onCityChange(e.target.value)}
-          className="w-full h-9 rounded-md border border-border bg-background px-3 text-xs text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
+          className="w-full h-9 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] px-3 text-xs text-[#0F172A] font-semibold focus:ring-2 focus:ring-[#EA580C] focus:outline-none"
         >
           {cities.map((c) => (
             <option key={c.value} value={c.value}>
@@ -98,7 +96,7 @@ export function PropertyFilters({
 
       {/* Accommodation Type */}
       <div className="space-y-2">
-        <label className="text-xs font-semibold uppercase tracking-wider text-foreground-secondary block">
+        <label className="text-xs font-bold uppercase tracking-wider text-[#64748B] block">
           Stay Type
         </label>
         <div className="flex flex-wrap gap-1.5">
@@ -109,10 +107,10 @@ export function PropertyFilters({
                 key={t.value}
                 type="button"
                 onClick={() => onTypeChange(t.value)}
-                className={`text-xs px-2.5 py-1 rounded-md border transition-all ${
+                className={`text-xs px-2.5 py-1 rounded-lg border transition-all ${
                   isSelected
-                    ? "bg-primary text-white border-primary font-semibold shadow-sm"
-                    : "bg-surface text-foreground-secondary border-transparent hover:border-slate-300"
+                    ? "bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-2xs"
+                    : "bg-[#F8FAFC] text-[#475569] border-[#E2E8F0] hover:border-slate-300 font-medium"
                 }`}
               >
                 {t.label}
@@ -124,7 +122,7 @@ export function PropertyFilters({
 
       {/* Gender Preference */}
       <div className="space-y-2">
-        <label className="text-xs font-semibold uppercase tracking-wider text-foreground-secondary block">
+        <label className="text-xs font-bold uppercase tracking-wider text-[#64748B] block">
           Gender Specific
         </label>
         <div className="grid grid-cols-3 gap-1.5">
@@ -135,10 +133,10 @@ export function PropertyFilters({
                 key={g.value}
                 type="button"
                 onClick={() => onGenderChange(g.value)}
-                className={`text-xs py-1.5 rounded-md border text-center transition-all ${
+                className={`text-xs py-1.5 rounded-lg border text-center transition-all ${
                   isSelected
-                    ? "bg-primary text-white border-primary font-semibold"
-                    : "bg-surface text-foreground-secondary border-transparent hover:border-slate-300"
+                    ? "bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-2xs"
+                    : "bg-[#F8FAFC] text-[#475569] border-[#E2E8F0] hover:border-slate-300 font-medium"
                 }`}
               >
                 {g.label}
@@ -151,10 +149,10 @@ export function PropertyFilters({
       {/* Max Budget Slider */}
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs">
-          <label className="font-semibold uppercase tracking-wider text-foreground-secondary">
+          <label className="font-bold uppercase tracking-wider text-[#64748B]">
             Max Monthly Budget
           </label>
-          <span className="font-bold text-primary">{formatINR(maxBudget)}</span>
+          <span className="font-bold text-[#0F172A] tabular-nums font-mono-numbers">{formatINR(maxBudget)}</span>
         </div>
         <input
           type="range"
@@ -163,33 +161,33 @@ export function PropertyFilters({
           step="1000"
           value={maxBudget}
           onChange={(e) => onMaxBudgetChange(Number(e.target.value))}
-          className="w-full accent-primary h-1.5 bg-slate-200 rounded-lg cursor-pointer"
+          className="w-full accent-[#EA580C] h-1.5 bg-slate-200 rounded-lg cursor-pointer"
         />
-        <div className="flex justify-between text-[10px] text-foreground-muted">
+        <div className="flex justify-between text-[10px] text-[#94A3B8] tabular-nums font-mono-numbers">
           <span>₹4,000</span>
           <span>₹35,000+</span>
         </div>
       </div>
 
       {/* Checkbox Toggles */}
-      <div className="space-y-2.5 pt-2 border-t border-border text-xs">
+      <div className="space-y-2.5 pt-2 border-t border-[#E2E8F0] text-xs">
         <label className="flex items-center justify-between cursor-pointer">
-          <span className="font-medium text-foreground">Verified listings only</span>
+          <span className="font-semibold text-[#0F172A]">Verified listings only</span>
           <input
             type="checkbox"
             checked={verifiedOnly}
             onChange={(e) => onVerifiedOnlyChange(e.target.checked)}
-            className="h-4 w-4 rounded border-border text-primary focus:ring-primary cursor-pointer"
+            className="h-4 w-4 rounded border-[#E2E8F0] text-[#059669] focus:ring-[#059669] cursor-pointer"
           />
         </label>
 
         <label className="flex items-center justify-between cursor-pointer">
-          <span className="font-medium text-foreground">Food &amp; Meals included</span>
+          <span className="font-semibold text-[#0F172A]">Food &amp; Meals included</span>
           <input
             type="checkbox"
             checked={foodIncluded}
             onChange={(e) => onFoodIncludedChange(e.target.checked)}
-            className="h-4 w-4 rounded border-border text-primary focus:ring-primary cursor-pointer"
+            className="h-4 w-4 rounded border-[#E2E8F0] text-[#EA580C] focus:ring-[#EA580C] cursor-pointer"
           />
         </label>
       </div>

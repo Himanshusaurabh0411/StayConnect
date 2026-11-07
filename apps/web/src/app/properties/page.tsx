@@ -7,17 +7,11 @@ import {
   Search,
   SlidersHorizontal,
   ArrowUpDown,
-  Building2,
-  MapPin,
-  ShieldCheck,
-  Grid3X3,
-  List,
 } from "lucide-react";
 import { PropertyCard } from "@/components/property/property-card";
 import { PropertyFilters } from "@/components/property/property-filters";
 import { DEMO_PROPERTIES } from "@/data/demo-data";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 function PropertiesSearchContent() {
   const searchParams = useSearchParams();
@@ -74,22 +68,22 @@ function PropertiesSearchContent() {
   };
 
   return (
-    <div className="bg-background-alt min-h-screen py-8">
+    <div className="bg-[#FAF9F6] min-h-screen py-8 border-b border-[#E2E8F0]">
       <div className="container-app">
         {/* Top Header */}
         <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 text-xs text-foreground-secondary mb-1">
-              <span className="font-semibold text-primary">Discover Stays</span>
+            <div className="flex items-center gap-2 text-xs text-[#64748B] mb-1">
+              <span className="font-bold text-[#0F172A]">Discover Stays</span>
               <span>•</span>
               <span className="capitalize">{selectedCity === "all" ? "All India" : selectedCity}</span>
               {queryParam && <span>• Keyword: &quot;{queryParam}&quot;</span>}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-primary">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-[-0.03em]">
               Accommodations &amp; Rooms for Rent
             </h1>
-            <p className="text-xs sm:text-sm text-foreground-secondary">
-              Showing {filteredProperties.length} verified stays with zero broker commission.
+            <p className="text-xs sm:text-sm text-[#475569]">
+              Showing <span className="font-bold text-[#0F172A] tabular-nums font-mono-numbers">{filteredProperties.length}</span> verified stays with zero broker commission.
             </p>
           </div>
 
@@ -98,19 +92,19 @@ function PropertiesSearchContent() {
             <button
               type="button"
               onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-              className="lg:hidden flex items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-xs font-semibold text-foreground shadow-sm"
+              className="lg:hidden flex items-center gap-2 rounded-xl border border-[#E2E8F0] bg-white px-3.5 py-2 text-xs font-bold text-[#0F172A] shadow-2xs"
             >
-              <SlidersHorizontal className="h-4 w-4 text-primary" />
+              <SlidersHorizontal className="h-4 w-4 text-[#0F172A]" />
               <span>Filters {verifiedOnly || foodIncluded ? "(Active)" : ""}</span>
             </button>
 
-            <div className="flex items-center gap-2 rounded-lg border border-border bg-white px-3 py-1.5 shadow-sm">
-              <ArrowUpDown className="h-3.5 w-3.5 text-foreground-secondary" />
-              <span className="text-xs text-foreground-secondary font-medium">Sort:</span>
+            <div className="flex items-center gap-2 rounded-xl border border-[#E2E8F0] bg-white px-3 py-1.5 shadow-2xs">
+              <ArrowUpDown className="h-3.5 w-3.5 text-[#64748B]" />
+              <span className="text-xs text-[#64748B] font-medium">Sort:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-transparent text-xs font-semibold text-foreground focus:outline-none cursor-pointer"
+                className="bg-transparent text-xs font-bold text-[#0F172A] focus:outline-none cursor-pointer"
               >
                 <option value="rent_low">Lowest Rent</option>
                 <option value="rent_high">Highest Rent</option>
@@ -142,7 +136,7 @@ function PropertiesSearchContent() {
             />
           </aside>
 
-          {/* Mobile Filter Drawer / Collapsible */}
+          {/* Mobile Filter Drawer */}
           {mobileFilterOpen && (
             <div className="lg:hidden col-span-1 mb-4">
               <PropertyFilters
@@ -172,17 +166,17 @@ function PropertiesSearchContent() {
                 ))}
               </div>
             ) : (
-              <div className="rounded-2xl border border-dashed border-border bg-white p-12 text-center space-y-4">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-50 text-primary">
+              <div className="rounded-2xl border border-dashed border-[#E2E8F0] bg-white p-12 text-center space-y-4">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 text-[#EA580C]">
                   <Search className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-foreground">No stays found matching your criteria</h3>
-                  <p className="text-xs text-foreground-secondary mt-1 max-w-sm mx-auto">
+                  <h3 className="text-base font-bold text-[#0F172A] tracking-[-0.02em]">No stays found matching your criteria</h3>
+                  <p className="text-xs text-[#64748B] mt-1 max-w-sm mx-auto">
                     Try raising the budget slider, resetting the gender filter, or selecting &quot;All Cities&quot;.
                   </p>
                 </div>
-                <Button size="sm" variant="outline" onClick={handleReset} className="text-xs font-semibold">
+                <Button size="sm" variant="outline" onClick={handleReset} className="text-xs font-bold border-[#E2E8F0]">
                   Reset All Filters
                 </Button>
               </div>

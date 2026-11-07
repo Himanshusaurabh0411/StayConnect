@@ -10,21 +10,16 @@ import {
   Search,
   Sparkles,
   ShieldCheck,
-  MapPin,
-  Calendar,
   Briefcase,
   GraduationCap,
   HeartHandshake,
   CheckCircle2,
   AlertCircle,
   MessageCircle,
-  UserCheck,
-  Filter,
 } from "lucide-react";
 import { DEMO_ROOMMATES } from "@/data/demo-data";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { formatINR } from "@/lib/utils";
 
 function RoommateFinderContent() {
@@ -33,7 +28,6 @@ function RoommateFinderContent() {
 
   const [selectedIntent, setSelectedIntent] = React.useState(initialIntent);
   const [selectedCity, setSelectedCity] = React.useState("all");
-  const [connectedIds, setConnectedIds] = React.useState<string[]>([]);
   const [requestSentIds, setRequestSentIds] = React.useState<string[]>([]);
 
   const handleSendRequest = (id: string) => {
@@ -70,21 +64,21 @@ function RoommateFinderContent() {
   });
 
   return (
-    <div className="bg-background-alt min-h-screen py-8">
+    <div className="bg-[#FAF9F6] min-h-screen py-8 border-b border-[#E2E8F0]">
       <div className="container-app space-y-8">
-        {/* Header Hero Banner */}
-        <div className="rounded-2xl bg-gradient-to-r from-primary via-primary-light to-primary-dark p-6 sm:p-10 text-white shadow-lg space-y-4">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-secondary-light">
+        {/* Header Hero Banner (Solid Deep Slate with purposeful terracotta accent) */}
+        <div className="rounded-2xl bg-[#0F172A] p-6 sm:p-10 text-white shadow-sm space-y-4">
+          <div className="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-3 py-1 text-xs font-bold text-[#EA580C]">
             <HeartHandshake className="h-4 w-4" />
             <span>StayConnect Roommate Engine</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.03em] leading-tight">
             Find your people. <br />
-            <span className="text-secondary">Share your space.</span>
+            <span className="text-[#EA580C]">Share your space.</span>
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
             Discover verified students and professionals to share an apartment, split rent costs,
             and build a peaceful home with like-minded individuals.
           </p>
@@ -92,12 +86,12 @@ function RoommateFinderContent() {
           {/* Privacy & Safety Note + Dashboard Shortcut */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 text-xs text-slate-300">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4 text-secondary shrink-0" />
+              <ShieldCheck className="h-4 w-4 text-[#059669] shrink-0" />
               <span>
                 Phone numbers remain hidden until mutual connection is accepted. Always meet in a public cafe for initial introductions.
               </span>
             </div>
-            <Button size="sm" asChild className="bg-secondary hover:bg-secondary-dark text-white font-bold text-xs shrink-0">
+            <Button size="sm" asChild className="bg-[#EA580C] hover:bg-[#C2410C] text-white font-bold text-xs shrink-0 shadow-2xs">
               <Link href="/roommates/dashboard">
                 <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
                 My Requests &amp; Chats (1)
@@ -108,7 +102,7 @@ function RoommateFinderContent() {
 
         {/* 3 Core Selection Tabs */}
         <div className="space-y-3">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-foreground-secondary">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-[#64748B]">
             Select Your Intent
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -122,13 +116,13 @@ function RoommateFinderContent() {
                   onClick={() => setSelectedIntent(item.id)}
                   className={`flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                     isSelected
-                      ? "bg-primary text-white border-primary shadow-sm"
-                      : "bg-white text-foreground border-border hover:border-slate-300"
+                      ? "bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-2xs"
+                      : "bg-white text-[#0F172A] border-[#E2E8F0] hover:border-slate-300"
                   }`}
                 >
                   <div
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
-                      isSelected ? "bg-white/10 text-white" : "bg-primary-50 text-primary"
+                      isSelected ? "bg-white/10 text-white" : "bg-orange-50 text-[#EA580C]"
                     }`}
                   >
                     <Icon className="h-5 w-5" />
@@ -141,20 +135,20 @@ function RoommateFinderContent() {
         </div>
 
         {/* City Filter & Counter */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-border">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-[#E2E8F0] shadow-2xs">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-foreground">Showing:</span>
-            <span className="text-xs text-foreground-secondary">
-              {filteredRoommates.length} active roommate profiles
+            <span className="text-xs font-bold text-[#0F172A]">Showing:</span>
+            <span className="text-xs text-[#475569]">
+              <strong className="text-[#0F172A] font-mono-numbers tabular-nums">{filteredRoommates.length}</strong> active roommate profiles
             </span>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-foreground-secondary">Filter City:</span>
+            <span className="text-xs font-bold text-[#64748B]">Filter City:</span>
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className="text-xs font-semibold text-foreground bg-surface border border-border rounded-md px-3 py-1.5 focus:outline-none cursor-pointer"
+              className="text-xs font-bold text-[#0F172A] bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3 py-1.5 focus:outline-none cursor-pointer"
             >
               <option value="all">All India</option>
               <option value="bangalore">Bangalore</option>
@@ -170,26 +164,26 @@ function RoommateFinderContent() {
             const hasSent = requestSentIds.includes(rm.id);
 
             return (
-              <Card key={rm.id} className="rounded-2xl border border-border bg-white shadow-card p-6 space-y-5">
+              <Card key={rm.id} className="rounded-2xl border border-[#E2E8F0] bg-white shadow-2xs hover:border-slate-300 hover:shadow-md transition-all p-6 space-y-5">
                 {/* Profile Top Row */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-3.5">
                     {/* Avatar Initials Placeholder */}
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary font-bold text-base border border-primary/20">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-[#0F172A] font-extrabold text-base border border-[#E2E8F0]">
                       {rm.displayName.charAt(0)}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-extrabold text-base text-foreground">
+                        <h3 className="font-extrabold text-base text-[#0F172A] tracking-[-0.02em]">
                           {rm.displayName}
                         </h3>
-                        <span className="text-xs text-foreground-muted">({rm.age} yrs)</span>
+                        <span className="text-xs text-[#64748B] font-medium">({rm.age} yrs)</span>
                       </div>
-                      <p className="text-xs text-foreground-secondary flex items-center gap-1.5 mt-0.5">
+                      <p className="text-xs text-[#475569] flex items-center gap-1.5 mt-0.5">
                         {rm.occupation === "professional" ? (
-                          <Briefcase className="h-3 w-3 text-primary" />
+                          <Briefcase className="h-3 w-3 text-[#EA580C]" />
                         ) : (
-                          <GraduationCap className="h-3 w-3 text-primary" />
+                          <GraduationCap className="h-3 w-3 text-[#EA580C]" />
                         )}
                         <span>{rm.occupationDetail}</span>
                         <span>•</span>
@@ -199,59 +193,59 @@ function RoommateFinderContent() {
                   </div>
 
                   <div className="flex flex-col items-end gap-1">
-                    <Badge variant="success" className="text-[11px] font-semibold py-0.5">
+                    <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-[#059669] border border-emerald-200/80">
+                      <ShieldCheck className="h-3 w-3 text-[#059669]" />
                       ID Checked
-                    </Badge>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-secondary-dark bg-secondary-50 border border-secondary/20 px-2 py-0.5 rounded-full">
-                      <Sparkles className="h-3 w-3 text-secondary" />
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#EA580C] bg-orange-50 border border-orange-200/60 px-2 py-0.5 rounded-md tabular-nums font-mono-numbers">
+                      <Sparkles className="h-3 w-3 text-[#EA580C]" />
                       94% Match
                     </span>
                   </div>
                 </div>
 
                 {/* Intent Tag */}
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary bg-primary-50 px-2.5 py-1 rounded-md">
-                  <Sparkles className="h-3.5 w-3.5 text-secondary" />
+                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0F172A] bg-slate-100 px-2.5 py-1 rounded-md border border-[#E2E8F0]">
                   <span className="capitalize">{rm.lookingFor.replace(/_/g, " ")}</span>
                 </div>
 
                 {/* Intro */}
-                <div className="bg-surface p-3.5 rounded-xl text-xs text-foreground-secondary leading-relaxed italic">
+                <div className="bg-[#F8FAFC] p-3.5 rounded-xl border border-[#E2E8F0] text-xs text-[#475569] leading-relaxed italic">
                   &ldquo;{rm.introduction}&rdquo;
                 </div>
 
                 {/* Preferences Matrix */}
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="p-2 bg-slate-50 rounded-lg">
-                    <span className="text-foreground-muted block text-[10px] uppercase font-semibold">
+                  <div className="p-2.5 bg-[#FAF9F6] border border-[#E2E8F0] rounded-xl">
+                    <span className="text-[#64748B] block text-[10px] uppercase font-bold">
                       Budget Range
                     </span>
-                    <span className="font-bold text-foreground">
+                    <span className="font-bold text-[#0F172A] tabular-nums font-mono-numbers">
                       {formatINR(rm.monthlyBudgetMin)} – {formatINR(rm.monthlyBudgetMax)}/mo
                     </span>
                   </div>
 
-                  <div className="p-2 bg-slate-50 rounded-lg">
-                    <span className="text-foreground-muted block text-[10px] uppercase font-semibold">
+                  <div className="p-2.5 bg-[#FAF9F6] border border-[#E2E8F0] rounded-xl">
+                    <span className="text-[#64748B] block text-[10px] uppercase font-bold">
                       Move-in Date
                     </span>
-                    <span className="font-bold text-foreground">Next 2-3 Weeks</span>
+                    <span className="font-bold text-[#0F172A]">Next 2-3 Weeks</span>
                   </div>
 
-                  <div className="p-2 bg-slate-50 rounded-lg">
-                    <span className="text-foreground-muted block text-[10px] uppercase font-semibold">
+                  <div className="p-2.5 bg-[#FAF9F6] border border-[#E2E8F0] rounded-xl">
+                    <span className="text-[#64748B] block text-[10px] uppercase font-bold">
                       Diet / Food Preference
                     </span>
-                    <span className="font-bold text-foreground capitalize">
+                    <span className="font-bold text-[#0F172A] capitalize">
                       {rm.foodPreference}
                     </span>
                   </div>
 
-                  <div className="p-2 bg-slate-50 rounded-lg">
-                    <span className="text-foreground-muted block text-[10px] uppercase font-semibold">
+                  <div className="p-2.5 bg-[#FAF9F6] border border-[#E2E8F0] rounded-xl">
+                    <span className="text-[#64748B] block text-[10px] uppercase font-bold">
                       Smoking Habit
                     </span>
-                    <span className="font-bold text-foreground capitalize">
+                    <span className="font-bold text-[#0F172A] capitalize">
                       {rm.smokingPreference.replace("_", " ")}
                     </span>
                   </div>
@@ -259,14 +253,14 @@ function RoommateFinderContent() {
 
                 {/* Preferred Localities */}
                 <div className="space-y-1">
-                  <span className="text-[11px] font-semibold text-foreground-secondary uppercase tracking-wider block">
+                  <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider block">
                     Preferred Localities:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {rm.preferredLocalities.map((loc) => (
                       <span
                         key={loc}
-                        className="text-xs bg-surface px-2.5 py-0.5 rounded-full text-foreground border border-border"
+                        className="text-xs bg-[#F8FAFC] px-2.5 py-0.5 rounded-md text-[#334155] border border-[#E2E8F0] font-medium"
                       >
                         {loc}
                       </span>
@@ -274,10 +268,10 @@ function RoommateFinderContent() {
                   </div>
                 </div>
 
-                {/* Recommendation Reason & Disclaimer */}
-                <div className="rounded-lg bg-primary-50/50 p-2.5 text-[11px] text-foreground-secondary space-y-1">
-                  <div className="flex items-center gap-1 font-semibold text-primary">
-                    <Sparkles className="h-3 w-3 text-secondary" />
+                {/* Recommendation Reason */}
+                <div className="rounded-xl bg-orange-50/70 border border-orange-200/60 p-2.5 text-[11px] text-[#475569] space-y-1">
+                  <div className="flex items-center gap-1 font-bold text-[#EA580C]">
+                    <Sparkles className="h-3 w-3" />
                     <span>Why you matched:</span>
                   </div>
                   <p>
@@ -286,27 +280,27 @@ function RoommateFinderContent() {
                 </div>
 
                 {/* Action Row */}
-                <div className="pt-2 border-t border-border flex items-center justify-between gap-3">
+                <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between gap-3">
                   <button
                     type="button"
                     onClick={() => alert("Report submitted for moderation review.")}
-                    className="text-[11px] text-foreground-muted hover:text-error transition-colors"
+                    className="text-[11px] text-[#64748B] hover:text-red-600 transition-colors cursor-pointer"
                   >
                     Report Profile
                   </button>
 
                   {hasSent ? (
-                    <Button size="sm" variant="outline" disabled className="text-xs text-secondary-dark">
-                      <CheckCircle2 className="mr-1.5 h-3.5 w-3.5 text-secondary" />
+                    <Button size="sm" variant="outline" disabled className="text-xs text-[#059669] border-[#059669]/30 bg-emerald-50/50">
+                      <CheckCircle2 className="mr-1.5 h-3.5 w-3.5 text-[#059669]" />
                       Request Sent
                     </Button>
                   ) : (
                     <Button
                       size="sm"
                       onClick={() => handleSendRequest(rm.id)}
-                      className="bg-primary hover:bg-primary-light text-white text-xs font-semibold"
+                      className="bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs font-bold shadow-2xs"
                     >
-                      <UserPlus className="mr-1.5 h-3.5 w-3.5 text-secondary-light" />
+                      <UserPlus className="mr-1.5 h-3.5 w-3.5" />
                       Connect for Free
                     </Button>
                   )}
@@ -317,10 +311,10 @@ function RoommateFinderContent() {
         </div>
 
         {/* Safety & Legal Guardrail Notice */}
-        <div className="rounded-xl border border-border bg-white p-4 text-xs text-foreground-secondary flex items-start gap-2.5">
-          <AlertCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+        <div className="rounded-2xl border border-[#E2E8F0] bg-white p-4 text-xs text-[#475569] flex items-start gap-2.5 shadow-2xs">
+          <AlertCircle className="h-4 w-4 text-[#EA580C] shrink-0 mt-0.5" />
           <p className="leading-relaxed">
-            <strong>Platform Safety Disclaimer:</strong> StayConnect uses algorithmic preference scoring to identify common criteria (budget, location, and lifestyle choices). A high compatibility match does not constitute a legal endorsement or guarantee personal safety. Please exercise prudent judgment and meet candidates in well-lit public venues before finalizing lease co-signings.
+            <strong className="text-[#0F172A]">Platform Safety Disclaimer:</strong> StayConnect uses algorithmic preference scoring to identify common criteria (budget, location, and lifestyle choices). A high compatibility match does not constitute a legal endorsement or guarantee personal safety. Please exercise prudent judgment and meet candidates in well-lit public venues before finalizing lease co-signings.
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Search, Users, Heart, User } from "lucide-react";
+import { Home, Search, Users, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function MobileNav() {
@@ -17,7 +17,7 @@ export function MobileNav() {
   ];
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-border shadow-lg pb-safe">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0] shadow-md pb-safe">
       <div className="grid grid-cols-4 h-16">
         {items.map((item) => {
           const isActive =
@@ -30,14 +30,14 @@ export function MobileNav() {
               className={cn(
                 "flex flex-col items-center justify-center gap-1 text-xs font-medium transition-colors",
                 isActive
-                  ? "text-primary font-bold"
-                  : "text-foreground-secondary hover:text-foreground"
+                  ? "text-[#EA580C] font-bold"
+                  : "text-[#64748B] hover:text-[#0F172A]"
               )}
             >
               <div
                 className={cn(
                   "p-1 rounded-full transition-transform",
-                  isActive && "bg-primary-50 text-primary scale-110"
+                  isActive && "bg-orange-50 text-[#EA580C] scale-105"
                 )}
               >
                 <Icon className={cn("h-5 w-5", isActive ? "stroke-[2.5]" : "stroke-[1.75]")} />

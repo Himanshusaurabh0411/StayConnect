@@ -11,7 +11,7 @@ import {
   ShieldCheck,
   ChevronDown,
   ArrowRight,
-  Sparkles,
+  BadgeCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -44,36 +44,40 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative bg-white pt-10 pb-12 md:pt-14 md:pb-16 border-b border-border">
+    <section className="relative bg-[#FAF9F6] pt-10 pb-12 md:pt-16 md:pb-20 border-b border-[#E2E8F0]">
       <div className="container-app">
-        {/* Editorial Heading */}
+        {/* Editorial Heading (Series-A Stanza/Linear high-contrast) */}
         <div className="max-w-3xl space-y-3 mb-8">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary uppercase tracking-wider bg-secondary-50 px-2.5 py-1 rounded">
-            <span>Direct Owner Connect • Pan-India</span>
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#059669] bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-md">
+            <BadgeCheck className="h-3.5 w-3.5 text-[#059669]" />
+            <span>Direct Owner Connect • Zero Brokerage</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-tight leading-[1.12]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.12]">
             Find your perfect stay <br className="hidden sm:inline" />
-            <span className="text-secondary">anywhere in India.</span>
+            <span className="relative inline-block text-[#0F172A]">
+              anywhere in India.
+              <span className="absolute bottom-1 left-0 w-full h-[4px] bg-[#EA580C] rounded-full opacity-80" />
+            </span>
           </h1>
 
-          <p className="text-sm sm:text-base text-foreground-secondary max-w-xl leading-relaxed">
+          <p className="text-sm sm:text-base text-[#475569] max-w-xl leading-relaxed">
             Discover verified PGs, hostels, flats and roommates without unnecessary brokerage.
             Connect directly with verified property owners across Indian colleges and tech hubs.
           </p>
         </div>
 
         {/* Real Product Search Box */}
-        <div className="rounded-2xl border border-border bg-white shadow-card-hover overflow-hidden max-w-4xl">
+        <div className="rounded-2xl border border-[#E2E8F0] bg-white shadow-sm hover:border-slate-300 transition-all overflow-hidden max-w-4xl">
           {/* Segmented Category Tabs */}
-          <div className="flex border-b border-border bg-surface/50 text-xs font-bold">
+          <div className="flex border-b border-[#E2E8F0] bg-slate-50/70 text-xs font-bold">
             <button
               type="button"
               onClick={() => setActiveTab("pg")}
               className={`flex-1 sm:flex-initial px-6 py-3.5 border-b-2 transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 activeTab === "pg"
-                  ? "border-secondary text-secondary bg-white"
-                  : "border-transparent text-foreground-secondary hover:text-foreground"
+                  ? "border-[#EA580C] text-[#EA580C] bg-white font-extrabold"
+                  : "border-transparent text-[#64748B] hover:text-[#0F172A]"
               }`}
             >
               <Building className="h-4 w-4" />
@@ -85,13 +89,13 @@ export function HeroSection() {
               onClick={() => setActiveTab("roommates")}
               className={`flex-1 sm:flex-initial px-6 py-3.5 border-b-2 transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 activeTab === "roommates"
-                  ? "border-secondary text-secondary bg-white"
-                  : "border-transparent text-foreground-secondary hover:text-foreground"
+                  ? "border-[#EA580C] text-[#EA580C] bg-white font-extrabold"
+                  : "border-transparent text-[#64748B] hover:text-[#0F172A]"
               }`}
             >
               <Users className="h-4 w-4" />
               <span>Find Roommates</span>
-              <span className="hidden sm:inline text-[9px] bg-secondary-50 text-secondary font-black px-1.5 py-0.2 rounded">
+              <span className="hidden sm:inline text-[9px] bg-orange-100 text-[#EA580C] font-black px-1.5 py-0.5 rounded">
                 NEW
               </span>
             </button>
@@ -101,8 +105,8 @@ export function HeroSection() {
               onClick={() => setActiveTab("flats")}
               className={`flex-1 sm:flex-initial px-6 py-3.5 border-b-2 transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 activeTab === "flats"
-                  ? "border-secondary text-secondary bg-white"
-                  : "border-transparent text-foreground-secondary hover:text-foreground"
+                  ? "border-[#EA580C] text-[#EA580C] bg-white font-extrabold"
+                  : "border-transparent text-[#64748B] hover:text-[#0F172A]"
               }`}
             >
               <Building className="h-4 w-4" />
@@ -113,16 +117,16 @@ export function HeroSection() {
           {/* Search Inputs Bar */}
           <form onSubmit={handleSearch} className="p-4 sm:p-5 flex flex-col md:flex-row gap-3 items-stretch md:items-center">
             {/* City Selector Field */}
-            <div className="md:w-56 rounded-xl border border-border bg-surface px-3 py-2.5 flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-secondary shrink-0" />
+            <div className="md:w-56 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2.5 flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-[#EA580C] shrink-0" />
               <div className="flex-1 text-left">
-                <span className="text-[10px] font-bold text-foreground-secondary uppercase block leading-none mb-1">
+                <span className="text-[10px] font-bold text-[#64748B] uppercase block leading-none mb-1">
                   City
                 </span>
                 <select
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.target.value)}
-                  className="w-full bg-transparent text-xs font-bold text-foreground focus:outline-none cursor-pointer"
+                  className="w-full bg-transparent text-xs font-bold text-[#0F172A] focus:outline-none cursor-pointer"
                 >
                   <option value="Bangalore">Bangalore</option>
                   <option value="Mumbai">Mumbai</option>
@@ -135,10 +139,10 @@ export function HeroSection() {
             </div>
 
             {/* Hyperlocal Locality / College / Landmark Field */}
-            <div className="flex-1 rounded-xl border border-border bg-surface px-3 py-2.5 flex items-center gap-2">
-              <Search className="h-4 w-4 text-foreground-muted shrink-0" />
+            <div className="flex-1 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2.5 flex items-center gap-2">
+              <Search className="h-4 w-4 text-[#94A3B8] shrink-0" />
               <div className="flex-1">
-                <span className="text-[10px] font-bold text-foreground-secondary uppercase block leading-none mb-1">
+                <span className="text-[10px] font-bold text-[#64748B] uppercase block leading-none mb-1">
                   Locality, College or Tech Park
                 </span>
                 <input
@@ -150,7 +154,7 @@ export function HeroSection() {
                       ? "e.g. Near Koramangala, Powai, or Cyber City..."
                       : "e.g. Near Christ Univ, Manyata Tech Park, 560034..."
                   }
-                  className="w-full bg-transparent text-xs font-medium text-foreground placeholder:text-foreground-muted focus:outline-none"
+                  className="w-full bg-transparent text-xs font-medium text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none"
                 />
               </div>
             </div>
@@ -158,15 +162,15 @@ export function HeroSection() {
             {/* Search Submit CTA */}
             <Button
               type="submit"
-              className="bg-secondary hover:bg-secondary-dark text-white font-extrabold text-sm h-12 md:h-auto md:py-3.5 px-8 rounded-xl shadow-sm cursor-pointer"
+              className="bg-[#EA580C] hover:bg-[#C2410C] text-white font-bold text-sm h-12 md:h-auto md:py-3.5 px-8 rounded-xl shadow-xs cursor-pointer transition-colors"
             >
-              Search
+              Search Stays
             </Button>
           </form>
 
           {/* Quick Locality Chips */}
           <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 flex flex-wrap items-center gap-1.5 text-xs">
-            <span className="text-[11px] font-bold text-foreground-secondary mr-1">Trending in {selectedCity}:</span>
+            <span className="text-[11px] font-bold text-[#64748B] mr-1">Trending in {selectedCity}:</span>
             {(quickLocalities[selectedCity] || quickLocalities["Bangalore"]).map((loc) => (
               <button
                 key={loc}
@@ -175,7 +179,7 @@ export function HeroSection() {
                   setLocalityQuery(loc);
                   router.push(`/properties?city=${selectedCity.toLowerCase()}&q=${encodeURIComponent(loc)}`);
                 }}
-                className="text-[11px] font-medium text-foreground-secondary hover:text-foreground bg-surface hover:bg-surface-hover px-2.5 py-1 rounded-md transition-colors"
+                className="text-[11px] font-medium text-[#475569] hover:text-[#0F172A] bg-[#F1F5F9] hover:bg-[#E2E8F0] px-2.5 py-1 rounded-md transition-colors"
               >
                 {loc}
               </button>
@@ -183,35 +187,35 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Value Highlights */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl text-xs text-foreground-secondary">
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/70 border border-border">
-            <div className="h-8 w-8 rounded-lg bg-white flex items-center justify-center font-bold text-secondary shadow-sm">
+        {/* 3 Core Trust Signals */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-4xl text-xs text-[#475569]">
+          <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs">
+            <div className="h-8 w-8 rounded-lg bg-emerald-50 border border-emerald-200/80 flex items-center justify-center font-bold text-[#059669] shrink-0 font-mono-numbers">
               ₹0
             </div>
             <div>
-              <strong className="text-foreground block">Zero Mandatory Brokerage</strong>
-              <span>Contact verified owners directly at no fee.</span>
+              <strong className="text-[#0F172A] block font-bold">Zero Mandatory Brokerage</strong>
+              <span className="text-[11px]">Connect directly with owners without middlemen.</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/70 border border-border">
-            <div className="h-8 w-8 rounded-lg bg-white flex items-center justify-center text-secondary shadow-sm">
+          <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs">
+            <div className="h-8 w-8 rounded-lg bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-[#059669] shrink-0">
               <ShieldCheck className="h-4 w-4" />
             </div>
             <div>
-              <strong className="text-foreground block">4-Tier Verified Listings</strong>
-              <span>Electricity bills, tax proofs &amp; ground checks.</span>
+              <strong className="text-[#0F172A] block font-bold">4-Tier Verified Listings</strong>
+              <span className="text-[11px]">Electricity bills, tax proofs &amp; ground checks.</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/70 border border-border">
-            <div className="h-8 w-8 rounded-lg bg-white flex items-center justify-center font-bold text-secondary shadow-sm">
-              <Sparkles className="h-4 w-4" />
+          <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs">
+            <div className="h-8 w-8 rounded-lg bg-orange-50 border border-orange-200/80 flex items-center justify-center font-bold text-[#EA580C] shrink-0">
+              100%
             </div>
             <div>
-              <strong className="text-foreground block">True Cost Transparency</strong>
-              <span>All mandatory electricity and food bills disclosed.</span>
+              <strong className="text-[#0F172A] block font-bold">True Cost Transparency</strong>
+              <span className="text-[11px]">All mandatory electricity and food bills disclosed.</span>
             </div>
           </div>
         </div>

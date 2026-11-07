@@ -4,23 +4,23 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
   {
     variants: {
       variant: {
-        default: "bg-primary text-white hover:bg-primary-light shadow-sm",
-        secondary: "bg-secondary text-white hover:bg-secondary-dark shadow-sm",
-        outline: "border border-border bg-background hover:bg-surface text-foreground",
-        ghost: "hover:bg-surface text-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        destructive: "bg-error text-white hover:bg-error/90 shadow-sm",
+        default: "bg-[#0F172A] text-white hover:bg-[#1E293B] shadow-2xs",
+        secondary: "bg-[#EA580C] text-white hover:bg-[#C2410C] shadow-2xs",
+        outline: "border border-[#E2E8F0] bg-white hover:bg-slate-50 text-[#0F172A] shadow-2xs",
+        ghost: "hover:bg-slate-100 text-[#0F172A]",
+        link: "text-[#EA580C] underline-offset-4 hover:underline",
+        destructive: "bg-[#DC2626] text-white hover:bg-[#B91C1C] shadow-2xs",
       },
       size: {
-        default: "h-10 px-4 py-2 rounded-md",
-        sm: "h-9 rounded-md px-3 text-xs",
-        lg: "h-11 rounded-lg px-6 text-base",
-        xl: "h-12 rounded-lg px-8 text-base font-semibold",
-        icon: "h-10 w-10 rounded-md",
+        default: "h-10 px-4 py-2 rounded-xl",
+        sm: "h-8.5 rounded-lg px-3 text-xs font-bold",
+        lg: "h-11 rounded-xl px-6 text-sm font-bold",
+        xl: "h-12 rounded-xl px-8 text-base font-extrabold",
+        icon: "h-10 w-10 rounded-xl",
       },
     },
     defaultVariants: {
